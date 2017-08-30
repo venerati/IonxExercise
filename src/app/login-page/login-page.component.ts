@@ -8,11 +8,17 @@ import { AuthenticationService } from '../authentication.service'
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+	info: {
+
 	username: string;
 	password: string;
-	//usernamej;
-	//passwordj;
-	token;
+
+	}
+
+	formUsername:string;
+	formPassword:string;
+	token:string;
+	infoSubmit:any;
 
   constructor(private authServ: AuthenticationService) { }
 
@@ -20,14 +26,16 @@ export class LoginPageComponent implements OnInit {
   }
 
  loginForm() {
- 	let username = this.username;
- 	let password = this.password;
- 	//let usernamej = JSON.stringify(this.username);
- 	//let passwordj = JSON.stringify(this.password);
- 	console.log(this.username);
- 	console.log(this.password);
 
-  	this.authServ.login(this.username, this.password).subscribe(token => {
+ 	let	info = {
+		username: this.formUsername,
+		password: this.formPassword,
+	}
+
+	let infoSubmit = JSON.stringify(info);
+	console.log(infoSubmit);
+
+  	this.authServ.login(this.infoSubmit.username, this.infoSubmit.password).subscribe(token => {
   		this.token = token.Token;
   	 //this.authServ.test().subscribe(token => {
   	 //	this.token = token.Token;

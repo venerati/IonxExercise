@@ -18,7 +18,8 @@ export class AuthenticationService {
   }
 
   login(username, password) {
-  	let url = this.url = 'http://ionxlive.net/api2/api/Login?email='+this.username+'&password='+this.password;
+  	let url = 'http://ionxlive.net/api2/api/Login?email='+username+'&password='+password;
+  	console.log(url)
   	return this.http.get(this.url)
   	.map(response => response.json());
 
