@@ -2,13 +2,14 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-        	<form (submit)="loginUser($event)">
+        	<form (ngSubmit)="loginForm()">
 	        	<div class="input-group">
-				  <input type="text" class="form-control" placeholder="Username" name="Username" aria-describedby="basic-addon2">
-				  <input type="password" class="form-control" placeholder="Password" name="Password" aria-describedby="basic-addon2">
+				  <input type="text" [(ngModel)]="username" placeholder="Username" name="username" aria-describedby="basic-addon2">
+				  <input type="password" [(ngModel)]="password" placeholder="Password" name="password" aria-describedby="basic-addon2">
 				  <button class="btn btn-default" type="submit" value="Login">Login</button>
 				</div>
         	</form>
+        	<h1>{{token}}</h1>
         </div>
         <div class="col-md-4"></div>
     </div>

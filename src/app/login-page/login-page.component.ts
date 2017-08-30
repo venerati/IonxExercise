@@ -10,18 +10,29 @@ import { AuthenticationService } from '../authentication.service'
 export class LoginPageComponent implements OnInit {
 	username: string;
 	password: string;
+	//usernamej;
+	//passwordj;
+	token;
 
   constructor(private authServ: AuthenticationService) { }
 
   ngOnInit() {
   }
 
- // userLogin(e) {
-  	//console.log('userLogin has fired')
-  	// this.username = e.target.elements[0].value;
-  	// this.password = e.target.elements[1].value;
-  	// console.log(this.username, this.password);
-  	// console.log("set");
-  //}
+ loginForm() {
+ 	let username = this.username;
+ 	let password = this.password;
+ 	//let usernamej = JSON.stringify(this.username);
+ 	//let passwordj = JSON.stringify(this.password);
+ 	console.log(this.username);
+ 	console.log(this.password);
+
+  	this.authServ.login(this.username, this.password).subscribe(token => {
+  		this.token = token.Token;
+  	 //this.authServ.test().subscribe(token => {
+  	 //	this.token = token.Token;
+  	});
+  	console.log(this.token);
+  }
 
 }
